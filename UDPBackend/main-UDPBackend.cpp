@@ -87,6 +87,12 @@ void XN_CALLBACK_TYPE User_NewUser(xn::UserGenerator& generator, XnUserID nId, v
 // Callback: An existing user was lost
 void XN_CALLBACK_TYPE User_LostUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie)
 {
+	char packet[1024];
+
+	sprintf(packet, "p%d lhx-999.0y-999.0z-999.0 rhx-999.0y-999.0z-999.0 ", nId);
+
+    SUDP_SendMsg(packet, strlen(packet));
+
 	printf("Lost user %d\n", nId);
 }
 // Callback: Detected a pose
